@@ -1,0 +1,5 @@
+UML Sequence Diagram – диаграмма последовательности;
+UML Use Case Diagram – диаграмма использования;
+UML Activity Diagram – диаграмма активности;
+UML Component Diagram – диаграмма компонент;
+Layer Diagram – диаграмма уровней
