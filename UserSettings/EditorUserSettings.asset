@@ -11,9 +11,12 @@ EditorUserSettings:
     UnityRemoteDevice:
       value: 225f4d46245b0d4902070862342649191512
       flags: 0
+<<<<<<< HEAD
     UnityRemoteResolution:
       value: 2d5e460b0459
       flags: 0
+=======
+>>>>>>> e5950b4 (camera rotation)
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
