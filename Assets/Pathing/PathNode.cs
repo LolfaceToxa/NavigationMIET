@@ -8,13 +8,13 @@ namespace Assets.Pathing
 {
     class PathNode : Node
     {
-        Dictionary<double, Node> Connections { get; set; }
+        Dictionary<Node, double> Connections { get; set; }
 
         public PathNode()
         {
-            this.Connections = new Dictionary<double, Node>();
+            this.Connections = new Dictionary<Node, double>();
         }
-        
-        
+
+
     }
 }
