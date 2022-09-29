@@ -13,6 +13,13 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     private float zoomSensitivity = 0.1F;
 
+    [SerializeField]
+    private float slideSensitivityX = 0.1F;
+    [SerializeField]
+    private float slideSensitivityY = 0.1F;
+
+
+
     Vector2 prevTouchPos1 = new Vector2();
     Vector2 prevTouchPos2 = new Vector2();
 
@@ -34,6 +41,7 @@ public class CameraMovement : MonoBehaviour
         originalRotation = this.gameObject.transform.rotation;
     }
 
+    //public GameObject Camera => this.gameObject;
 
     // Update is called once per frame
     void Update()
@@ -48,7 +56,16 @@ public class CameraMovement : MonoBehaviour
                     this.Rotate(Input.GetTouch(0));
                     break;
                 case 2:
-                    this.Zoom(Input.GetTouch(0), Input.GetTouch(1));
+                    var diff1 = Input.GetTouch(0).deltaPosition;
+                    var diff2 = Input.GetTouch(1).deltaPosition;
+                    if (Vector2.Dot(diff1, diff2) > 0)
+                    {
+                        this.Slide(Input.GetTouch(0), Input.GetTouch(1));
+                    }
+                    else
+                    {
+                        this.Zoom(Input.GetTouch(0), Input.GetTouch(1));
+                    }
                     break;
             }
         }
@@ -62,12 +79,21 @@ public class CameraMovement : MonoBehaviour
         bool isIncreased = (Vector2.Distance(touch1.position, touch2.position) > Vector2.Distance(touch1.position - diff1, touch2.position - diff2));
         int direction = (isIncreased) ? 1 : -1;
         var zoom = -Vector2.Dot(diff1, diff2);
-        if (zoom > 0)
-        {
-            zoom = Mathf.Clamp(zoom, 0f, 1000f);
-            this.gameObject.transform.position += direction * zoom * this.gameObject.transform.forward * zoomSensitivity;
 
-        }
+        zoom = Mathf.Clamp(zoom, 0f, 100f);
+        this.gameObject.transform.position += direction * zoom * this.gameObject.transform.forward * zoomSensitivity;
+
+
+
+
+    }
+
+    public void Slide(Touch touch1, Touch touch2)
+    {
+        var diff1 = touch1.deltaPosition;
+        var diff2 = touch2.deltaPosition;
+        var avg = -(diff1 + diff2) / 2;
+        this.gameObject.transform.position += Quaternion.AngleAxis(this.gameObject.transform.rotation.eulerAngles.y, Vector3.up) * new Vector3(avg.x * slideSensitivityX, 0, avg.y * slideSensitivityY);
 
 
     }
