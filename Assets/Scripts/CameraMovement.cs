@@ -5,10 +5,13 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    public const float sensitivityX = 10F;
+    private float sensitivityX = 10F;
 
     [SerializeField]
-    public const float sensitivityY = 10F;
+    private float sensitivityY = 10F;
+
+    [SerializeField]
+    private float zoomSensitivity = 0.1F;
 
     Vector2 prevTouchPos1 = new Vector2();
     Vector2 prevTouchPos2 = new Vector2();
@@ -54,10 +57,18 @@ public class CameraMovement : MonoBehaviour
 
     public void Zoom(Touch touch1, Touch touch2)
     {
+        var diff1 = touch1.deltaPosition;
+        var diff2 = touch2.deltaPosition;
+        bool isIncreased = (Vector2.Distance(touch1.position, touch2.position) > Vector2.Distance(touch1.position - diff1, touch2.position - diff2));
+        int direction = (isIncreased) ? 1 : -1;
+        var zoom = -Vector2.Dot(diff1, diff2);
+        if (zoom > 0)
+        {
+            zoom = Mathf.Clamp(zoom, 0f, 1000f);
+            this.gameObject.transform.position += direction * zoom * this.gameObject.transform.forward * zoomSensitivity;
 
-        //Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-        //float zoomDistance = zoomSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
-        //GetComponent<Camera>().transform.Translate(ray.direction * zoomDistance, Space.World);
+        }
+
 
     }
 
