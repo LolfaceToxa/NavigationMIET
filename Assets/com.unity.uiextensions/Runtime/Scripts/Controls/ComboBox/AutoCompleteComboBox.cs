@@ -155,8 +155,9 @@ namespace UnityEngine.UI.Extensions
                 _rectTransform = GetComponent<RectTransform>();
                 _inputRT = _rectTransform.Find("InputField").GetComponent<RectTransform>();
                 _mainInput = _inputRT.GetComponent<InputField>();
+                
 
-				//_arrow_Button = _rectTransform.FindChild ("ArrowBtn").GetComponent<Button> ();
+                //_arrow_Button = _rectTransform.FindChild ("ArrowBtn").GetComponent<Button> ();
 
                 _overlayRT = _rectTransform.Find("Overlay").GetComponent<RectTransform>();
                 _overlayRT.gameObject.SetActive(false);

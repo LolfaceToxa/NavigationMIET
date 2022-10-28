@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg186"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="logo_miet.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview188"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4503086"
+     inkscape:cx="183.06448"
+     inkscape:cy="367.85273"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs183" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#000000;stroke-width:0.264583"
+       id="path122"
+       cx="102.29181"
+       cy="109.56634"
+       r="57.533649" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:2.45496;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers fill stroke"
+       d="M 53.635229,125.67717 65.483921,85.222077 75.982766,125.17566 87.456502,85.305659 99.605162,125.76075 Z"
+       id="path303"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="display:inline;fill:#ffffff;stroke:#ffffff;stroke-width:2.64761;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers fill stroke"
+       d="m 105.76312,101.26089 -0.0948,24.51924 13.99743,-24.98543 -0.0461,24.98543 h -13.95128"
+       id="path472"
+       sodipodi:nodetypes="ccccc" />
+    <a
+       id="a1265"
+       transform="matrix(1.1557342,0,0,1.4037582,-8.721424,-50.552365)">
+      <circle
+         style="display:inline;fill:#ffffff;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers fill stroke"
+         id="path583"
+         cx="114.87379"
+         cy="117.19579"
+         r="8.5784473" />
+    </a>
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       id="rect1319"
+       width="15.221907"
+       height="22.832859"
+       x="99.84539"
+       y="71.852554" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.70053;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect2061"
+       width="2.4758751"
+       height="41.729492"
+       x="120.88993"
+       y="93.728409"
+       ry="0.5539313" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2.64761;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;paint-order:markers fill stroke"
+       d="M 143.20466,125.51152 V 95.583622"
+       id="path3063" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.63174;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 136.53948,100.8208 c 2.64202,-2.827529 4.6468,-5.029384 6.65248,-7.597688 l 6.82306,7.857438 z"
+       id="path3065"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>
