@@ -30,6 +30,13 @@ namespace Assets.Pathing
             {
                 return node == A || node == B;
             }
+            
+            public TNode Other(TNode node)
+            {
+                if (node == A) return B;
+                if (node == B) return A;
+                throw new Exception("Link doesnt have given node!");
+            }
         }
 
         private class LinkEnumerator : IEnumerator<Link>
