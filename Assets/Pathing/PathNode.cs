@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Pathing
 {
     class PathNode : Node
     {
-        Dictionary<Node, double> Connections { get; set; }
+        public string Name { get; }
 
-        public PathNode()
+        public PathNode(Vector3 vec, string name) : base(vec)
         {
-            this.Connections = new Dictionary<Node, double>();
+            Name = name;
+        }
+
+        public PathNode(Vector3 vec) : this(vec, string.Empty)
+        {
         }
 
 
