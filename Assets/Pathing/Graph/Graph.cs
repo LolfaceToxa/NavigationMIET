@@ -32,7 +32,7 @@ namespace Assets.Pathing
             }
         }
 
-        private class LinkEnumerator : IEnumerator
+        private class LinkEnumerator : IEnumerator<Link>
         {
 
             List<Link> _links;
@@ -61,6 +61,11 @@ namespace Assets.Pathing
                 }
             }
 
+            Link IEnumerator<Link>.Current => (Link)Current;
+
+            public void Dispose()
+            {
+            }
 
             public bool MoveNext()
             {
@@ -81,7 +86,25 @@ namespace Assets.Pathing
             {
                 position = -1;
             }
+
+
         }
+
+        private class LinkEnumerable : IEnumerable<Link>
+        {
+            List<Link> _links;
+            TNode _node;
+            public LinkEnumerable(List<Link> links, TNode node)
+            {
+                _links = links;
+                _node = node;
+            }
+
+            public IEnumerator<Link> GetEnumerator() => new LinkEnumerator(_links, _node);
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
 
         HashSet<TNode> _nodes;
         List<Link> _links;
@@ -112,9 +135,9 @@ namespace Assets.Pathing
             _links.Add(new Link(a, b));
         }
 
-        public IEnumerator GetLinksOf(TNode node)
+        public IEnumerable<Link> GetLinksOf(TNode node)
         {
-            return new LinkEnumerator(_links, node);
+            return new LinkEnumerable(_links, node);
         }
 
 

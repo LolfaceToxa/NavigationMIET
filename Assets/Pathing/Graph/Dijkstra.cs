@@ -9,7 +9,7 @@ namespace Assets.Pathing
 {
     class Dijkstra
     {
-        List<Node> Calculate(Graph graph)
+        List<Node> Calculate(Graph<Node> graph)
         {
 
             //a
