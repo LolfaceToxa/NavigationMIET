@@ -50,6 +50,7 @@ namespace Assets.Pathing
             }
 
             distances[start] = 0.0;
+
             int size = graph.Nodes.Count;
             for (int i = 0; i < size - 1; i++)
             {
@@ -76,11 +77,12 @@ namespace Assets.Pathing
         public static Stack<TNode> ReversePath(Graph<TNode> graph, Dictionary<TNode, double> distances, TNode start, TNode end)
         {
             double distanceLeft = distances[end];
-            Stack<TNode> path = new Stack<TNode>();
-            HashSet<TNode> ignore = new();
+
             bool foundNode;
-            path.Push(end);
             TNode curNode;
+            Stack<TNode> path = new Stack<TNode>();
+            path.Push(end);
+            HashSet<TNode> ignore = new();
             while (!NearZero(distanceLeft))
             {
                 curNode = path.Peek();
