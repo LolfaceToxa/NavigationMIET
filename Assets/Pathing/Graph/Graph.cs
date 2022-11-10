@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Pathing
 {
-    class Graph<TNode> where TNode : Node
+    public class Graph<TNode> where TNode : Node
     {
         public class Link
         {

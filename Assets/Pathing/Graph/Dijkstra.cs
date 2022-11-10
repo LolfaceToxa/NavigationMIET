@@ -11,15 +11,13 @@ namespace Assets.Pathing
 
 
 
-    class Dijkstra<TNode> where TNode : Node
+    public class Dijkstra<TNode> where TNode : Node
     {
 
         public const double ERROR = 1e-16;
 
-        public static bool NearZero(double value)
-        {
-            return Math.Abs(value) < ERROR;
-        }
+        public static bool NearZero(double value) => Math.Abs(value) < ERROR;
+
 
         static private TNode FindNextMin(Dictionary<TNode, double> distances, Dictionary<TNode, bool> shortest, HashSet<TNode> nodes)
         {

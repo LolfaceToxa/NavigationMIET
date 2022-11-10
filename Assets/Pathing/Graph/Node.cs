@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Pathing
 {
-    class Node
+    public class Node
     {
         public string Name { get; }
 
