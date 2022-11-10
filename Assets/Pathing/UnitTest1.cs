@@ -28,9 +28,23 @@ namespace GraphTest
             _graph = new();
         }
 
-        public void AddChain(int len)
+        public void AddChain(Node start, int len)
         {
-
+            Node prev = start;
+            Node cur;
+            for (int i = 0; i < len; i++)
+            {
+                cur = new Node();
+                if (prev is null)
+                {
+                    _graph.Add(cur);
+                }
+                else
+                {
+                    _graph.Add(prev, cur);
+                }
+                prev = cur;
+            }
         }
 
 
@@ -64,5 +78,46 @@ namespace GraphTest
             Assert.IsTrue(CompareLists(path, realPath));
 
         }
+
+
+
+        [DataTestMethod]
+        [DataRow(1, 10)]
+        [DataRow(2, 10)]
+        [DataRow(10, 10)]
+        [DataRow(100, 10)]
+        [DataRow(1000, 10)]
+
+        [DataRow(1, 10, 10)]
+        [DataRow(2, 10, 10)]
+        [DataRow(10, 10, 10)]
+        [DataRow(100, 10, 10)]
+        public void Branches(int len, int branchLen, int branchCount = 1)
+        {
+            List<Node> realPath = new(len);
+            Node prev = null;
+            Node cur;
+            for (int i = 0; i < len; i++)
+            {
+                cur = new Node();
+                if (prev is null)
+                {
+                    _graph.Add(cur);
+                }
+                else
+                {
+                    _graph.Add(prev, cur);
+                }
+                for (int j = 0; j < branchCount; j++)
+                {
+                    AddChain(cur, branchLen);
+                }
+                realPath.Add(cur);
+                prev = cur;
+            }
+            var path = Dijkstra<Node>.FindPath(_graph, realPath[0], realPath[realPath.Count - 1]);
+            Assert.IsTrue(CompareLists(path, realPath));
+        }
+
     }
 }
