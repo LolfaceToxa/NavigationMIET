@@ -30,7 +30,7 @@ namespace Assets.Pathing
             {
                 return node == A || node == B;
             }
-            
+
             public TNode Other(TNode node)
             {
                 if (node == A) return B;
@@ -113,38 +113,39 @@ namespace Assets.Pathing
         }
 
 
-        HashSet<TNode> _nodes;
-        List<Link> _links;
+        public HashSet<TNode> Nodes { get; }
+        public List<Link> Links { get; }
 
         public Graph()
         {
-            _nodes = new();
-            _links = new();
+            Nodes = new();
+            Links = new();
         }
 
 
         public void Add(TNode node)
         {
-            _nodes.Add(node);
+            Nodes.Add(node);
         }
 
-        public void Add(TNode a, TNode b)
+        public void Add(TNode a, TNode b) => Add(a, b, 1);
+        public void Add(TNode a, TNode b, double dist)
         {
-            if (!_nodes.Contains(a))
+            if (!Nodes.Contains(a))
             {
                 Add(a);
             }
-            if (!_nodes.Contains(b))
+            if (!Nodes.Contains(b))
             {
                 Add(b);
             }
 
-            _links.Add(new Link(a, b));
+            Links.Add(new Link(a, b, dist));
         }
 
         public IEnumerable<Link> GetLinksOf(TNode node)
         {
-            return new LinkEnumerable(_links, node);
+            return new LinkEnumerable(Links, node);
         }
 
 
