@@ -5,18 +5,18 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private float sensitivityX = 10F;
+    private float sensitivityX = 1.5F;
 
     [SerializeField]
-    private float sensitivityY = 10F;
+    private float sensitivityY = 0.5F;
 
     [SerializeField]
     private float zoomSensitivity = 0.1F;
 
     [SerializeField]
-    private float slideSensitivityX = 0.1F;
+    private float slideSensitivityX = 0.05F;
     [SerializeField]
-    private float slideSensitivityY = 0.1F;
+    private float slideSensitivityY = 0.05F;
 
 
 
