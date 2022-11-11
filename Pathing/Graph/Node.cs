@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Assets.Pathing
+namespace Pathing
 {
     public class Node
     {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Assets.Pathing
+namespace Pathing
 {
     public class Graph<TNode> where TNode : Node
     {

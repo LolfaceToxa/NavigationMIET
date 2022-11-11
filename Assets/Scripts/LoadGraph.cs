@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Pathing;
 public class LoadGraph : MonoBehaviour
 {
-
+    
     private void Awake()
     {
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();

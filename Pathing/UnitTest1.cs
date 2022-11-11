@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Assets.Pathing;
+using Pathing;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;

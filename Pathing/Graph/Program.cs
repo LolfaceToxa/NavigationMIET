@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.Pathing;
+using Pathing;
 
 namespace GraphExe
 {
