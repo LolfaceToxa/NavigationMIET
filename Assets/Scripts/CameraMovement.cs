@@ -32,12 +32,8 @@ public class CameraMovement : MonoBehaviour
 
     Quaternion originalRotation;
 
-    [SerializeField]
-    Camera camera;
-
     void Start()
     {
-        Debug.Assert(camera != null);
         originalRotation = this.gameObject.transform.rotation;
     }
 
