@@ -119,5 +119,23 @@ namespace GraphTest
             Assert.IsTrue(CompareLists(path, realPath));
         }
 
+
+        public void AddLoop(Node start, int len)
+        {
+
+        }
+
+
+        [DataTestMethod]
+        [DataRow(1, 10)]
+        [DataRow(2, 10)]
+        [DataRow(10, 10)]
+        [DataRow(100, 10)]
+        [DataRow(1000, 10)]
+        public void Loops(int len, int loopLen)
+        {
+
+        }
+
     }
 }
