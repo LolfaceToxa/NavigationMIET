@@ -122,8 +122,24 @@ namespace GraphTest
 
         public void AddLoop(Node start, int len)
         {
-
+            Node prev = start;
+            Node cur;
+            for (int i = 0; i < len; i++)
+            {
+                cur = new Node();
+                if (prev is null)
+                {
+                    _graph.Add(cur);
+                }
+                else
+                {
+                    _graph.Add(prev, cur);
+                }
+                prev = cur;
+            }
+            _graph.Add(prev, start);
         }
+
 
 
         [DataTestMethod]
@@ -134,7 +150,26 @@ namespace GraphTest
         [DataRow(1000, 10)]
         public void Loops(int len, int loopLen)
         {
-
+            List<Node> realPath = new(len);
+            Node prev = null;
+            Node cur;
+            for (int i = 0; i < len; i++)
+            {
+                cur = new Node();
+                if (prev is null)
+                {
+                    _graph.Add(cur);
+                }
+                else
+                {
+                    _graph.Add(prev, cur);
+                }
+                AddLoop(cur, loopLen);
+                realPath.Add(cur);
+                prev = cur;
+            }
+            var path = Dijkstra<Node>.FindPath(_graph, realPath[0], realPath[realPath.Count - 1]);
+            Assert.IsTrue(CompareLists(path, realPath));
         }
 
     }
