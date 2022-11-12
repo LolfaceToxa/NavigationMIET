@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pathing
 {
-    public class Graph<TNode> where TNode : Node
+    public class Graph<TNode> where TNode : INode
     {
         public class Link
         {
@@ -28,13 +28,13 @@ namespace Pathing
 
             public bool HasNode(TNode node)
             {
-                return node == A || node == B;
+                return node.Equals(A) || node.Equals(B);
             }
 
             public TNode Other(TNode node)
             {
-                if (node == A) return B;
-                if (node == B) return A;
+                if (node.Equals(A)) return B;
+                if (node.Equals(B)) return A;
                 throw new Exception("Link doesnt have given node!");
             }
         }

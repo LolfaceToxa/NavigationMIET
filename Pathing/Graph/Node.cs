@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pathing
 {
-    public class Node
+    public class Node : INode
     {
         public string Name { get; }
 
