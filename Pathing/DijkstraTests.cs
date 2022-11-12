@@ -172,5 +172,57 @@ namespace GraphTest
             Assert.IsTrue(CompareLists(path, realPath));
         }
 
+
+        public void AddBrigde(Node start, Node end, int len)
+        {
+            Node prev = start;
+            Node cur;
+            for (int i = 0; i < len; i++)
+            {
+                cur = new Node();
+                if (prev is null)
+                {
+                    _graph.Add(cur);
+                }
+                else
+                {
+                    _graph.Add(prev, cur);
+                }
+                prev = cur;
+            }
+            _graph.Add(prev, end);
+        }
+
+
+        [DataTestMethod]
+        [DataRow(1, 10)]
+        [DataRow(2, 10)]
+        [DataRow(10, 10)]
+        [DataRow(100, 10)]
+        [DataRow(1000, 10)]
+        public void Cycle(int len, int bridgeLen)
+        {
+            List<Node> realPath = new(len);
+            Node prev = null;
+            Node cur;
+            for (int i = 0; i < len; i++)
+            {
+                cur = new Node();
+                if (prev is null)
+                {
+                    _graph.Add(cur);
+                }
+                else
+                {
+                    _graph.Add(prev, cur);
+                }
+                realPath.Add(cur);
+                prev = cur;
+            }
+            AddBrigde(realPath[0], realPath[realPath.Count - 1], bridgeLen + len);
+            var path = Dijkstra<Node>.FindPath(_graph, realPath[0], realPath[realPath.Count - 1]);
+            Assert.IsTrue(CompareLists(path, realPath));
+        }
+
     }
 }
