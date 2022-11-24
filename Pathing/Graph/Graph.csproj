@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="bin.meta" />
+    <None Remove="Dijkstra.cs.meta" />
+    <None Remove="Graph.cs.meta" />
+    <None Remove="Graph.csproj.meta" />
+    <None Remove="Node.cs.meta" />
+    <None Remove="obj.meta" />
+    <None Remove="Program.cs.meta" />
+  </ItemGroup>
+
+</Project>

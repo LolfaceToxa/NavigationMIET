@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Pathing;
 public class LoadGraph : MonoBehaviour
 {
 
+    public GameObject NodePrefab;
+
     private void Awake()
     {
+        for (int i = 0; i < 10; i++)
+        {
+            Instantiate(NodePrefab, Vector3.zero, Quaternion.identity);
+            Debug.Log("Created node");
+        }
+
+
+
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startColor = Color.red;
         lineRenderer.endColor = Color.red;
