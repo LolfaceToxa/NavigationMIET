@@ -20,6 +20,7 @@ public class CameraMovement : MonoBehaviour
 
 
 
+
     Vector2 prevTouchPos1 = new Vector2();
     Vector2 prevTouchPos2 = new Vector2();
 
@@ -32,8 +33,10 @@ public class CameraMovement : MonoBehaviour
 
     Quaternion originalRotation;
 
+
     void Start()
     {
+
         originalRotation = this.gameObject.transform.rotation;
     }
 

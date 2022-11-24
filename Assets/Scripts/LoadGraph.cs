@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Pathing;
 public class LoadGraph : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class LoadGraph : MonoBehaviour
             Instantiate(NodePrefab, Vector3.zero, Quaternion.identity);
             Debug.Log("Created node");
         }
+
 
 
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
