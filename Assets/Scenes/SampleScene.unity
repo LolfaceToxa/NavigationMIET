@@ -2622,6 +2622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0dfe5a21aa20494d82e22388a2d7cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NodePrefab: {fileID: 0}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2639,7 +2640,6 @@ MonoBehaviour:
   zoomSensitivity: 0.1
   slideSensitivityX: 0.1
   slideSensitivityY: 0.1
-  camera: {fileID: 0}
 --- !u!1 &991734291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2959,7 +2959,7 @@ GameObject:
   - component: {fileID: 1040368322}
   - component: {fileID: 1040368321}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5379,7 +5379,7 @@ GameObject:
   - component: {fileID: 1711768444}
   - component: {fileID: 1711768443}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

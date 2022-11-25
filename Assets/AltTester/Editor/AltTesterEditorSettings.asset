@@ -287,7 +287,7 @@ MonoBehaviour:
     _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 19.2871988
+    _testDuration: 39.7250092
     path: Assets/AltTester/Editor/Tests/NewAltTest.cs
     _testSelectedCount: 0
   - _selected: 1
