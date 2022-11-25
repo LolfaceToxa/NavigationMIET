@@ -18,12 +18,15 @@ public class DrawGraph : MonoBehaviour
         liner.startColor = Color.cyan;
         liner.endColor = Color.cyan;
         liner.widthMultiplier = 0.8f;
+        liner.positionCount = 0;
+
     }
 
 
     public void Draw(Graph<Node> _graph)
     {
         graph = _graph;
+        liner.positionCount = graph.Links.Count * 2;
         foreach (var link in graph.Links)
         {
             DrawLink(link.A, link.B);
@@ -49,4 +52,21 @@ public class DrawGraph : MonoBehaviour
     {
 
     }
+
+
+    private void OnDrawGizmos()
+    {
+        var nodes = GameObject.FindGameObjectsWithTag("GraphNode");
+        Gizmos.color = Color.red;
+        foreach (var node in nodes)
+        {
+            var nodeLinks = node.GetComponent<NodeLink>();
+            foreach (var linkedNode in nodeLinks.nodes)
+            {
+                Gizmos.DrawLine(linkedNode.transform.position, node.transform.position);
+            }
+        }
+
+    }
+
 }

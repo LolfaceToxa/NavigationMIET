@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NodeLink : MonoBehaviour
 {
+    [SerializeField]
+    public string Name = string.Empty;
 
     [SerializeField]
     public GameObject[] nodes;
@@ -30,5 +32,16 @@ public class NodeLink : MonoBehaviour
     void Update()
     {
 
+    }
+
+
+   
+    private void OnDrawGizmosSelected()
+    {
+        foreach (var node in nodes)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(node.transform.position, gameObject.transform.position);
+        }
     }
 }
