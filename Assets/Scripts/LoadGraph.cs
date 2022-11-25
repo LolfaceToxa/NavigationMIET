@@ -89,7 +89,7 @@ public class LoadGraph : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Camera.main.GetComponent<DrawGraph>().Draw(graph);
+        this.gameObject.GetComponent<DrawGraph>().Draw(graph);
     }
 
     // Update is called once per frame
