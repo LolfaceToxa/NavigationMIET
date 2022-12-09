@@ -63,7 +63,8 @@ public class DrawGraph : MonoBehaviour
             var nodeLinks = node.GetComponent<NodeLink>();
             foreach (var linkedNode in nodeLinks.nodes)
             {
-                Gizmos.DrawLine(linkedNode.transform.position, node.transform.position);
+                if (linkedNode != null)
+                    Gizmos.DrawLine(linkedNode.transform.position, node.transform.position);
             }
         }
 

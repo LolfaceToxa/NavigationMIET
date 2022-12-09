@@ -35,13 +35,16 @@ public class NodeLink : MonoBehaviour
     }
 
 
-   
+
     private void OnDrawGizmosSelected()
     {
         foreach (var node in nodes)
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(node.transform.position, gameObject.transform.position);
+            if (node != null)//unity has own way to check "fake null" objects (unassigned ones)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(node.transform.position, gameObject.transform.position);
+            }
         }
     }
 }
