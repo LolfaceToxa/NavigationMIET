@@ -13,12 +13,14 @@ public class StartEndProcessor : MonoBehaviour
     public void OnStartSet(string start)
     {
         _start = start;
+        Debug.Log(start);
         _Pass();
     }
 
     public void OnEndSet(string end)
     {
         _end = end;
+        Debug.Log(end);
         _Pass();
     }
 
