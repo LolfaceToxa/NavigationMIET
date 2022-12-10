@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Pathing;
+using Unity.VisualScripting;
+
 public class LoadGraph : MonoBehaviour
 {
 
@@ -44,57 +46,34 @@ public class LoadGraph : MonoBehaviour
     }
 
 
-    public void AddLink(GameObject o1, GameObject o2)
+    public void AddLink(GameObject o1, GameObject o2, string name1, string name2)
     {
         Debug.Assert(o1 is not null, "o1 is a null!");
         Debug.Assert(o2 is not null, "o2 is a null!");
-        this.graph.Add(new NamedNode(o1), new NamedNode(o2), Vector3.Distance(o1.transform.position, o2.transform.position));
-        Debug.Log(string.Format("added object under id[{0}] into graph", o1.GetInstanceID()));
-        Debug.Log(string.Format("added object under id[{0}] into graph", o2.GetInstanceID()));
+        this.graph.Add(new NamedNode(o1, name1), new NamedNode(o2, name2), Vector3.Distance(o1.transform.position, o2.transform.position));
+        Debug.Log(string.Format(@"added object under id[{0}] with name ""{1}"" into graph", o1.GetInstanceID(), o1.name));
+        Debug.Log(string.Format(@"added object under id[{0}] with name ""{1}"" into graph", o2.GetInstanceID(), o2.name));
     }
 
-    private void Awake()
+
+    private List<string> FormItemList()
     {
-
+        List<string> items = new();
+        Debug.Log("loadeding items");
+        foreach (var node in graph.Nodes)
+        {
+            if (string.IsNullOrEmpty(node.Name)) continue;
+            items.Add(node.Name);
+            Debug.Log(node.Name);
+        }
+        return items;
     }
 
-    //private void Awake()
-    //{
-    //    for (int i = 0; i < 10; i++)
-    //    {
-    //        Instantiate(NodePrefab, Vector3.zero, Quaternion.identity);
-    //        Debug.Log("Created node");
-    //    }
 
-
-
-    //    LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-    //    lineRenderer.startColor = Color.red;
-    //    lineRenderer.endColor = Color.red;
-    //    lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-    //    //Gradient gradient = new();
-    //    //var alpha = 1.0f;
-    //    //gradient.SetKeys(
-    //    //    new GradientColorKey[] { new GradientColorKey(Color.cyan, 0.0f), new GradientColorKey(Color.cyan, 1.0f) },
-    //    //    new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-    //    //    );
-    //    //lineRenderer.colorGradient = gradient;
-    //    lineRenderer.startColor = Color.cyan;
-    //    lineRenderer.endColor = Color.cyan;
-    //    lineRenderer.SetPosition(1, new Vector3(0, 10, 0));
-    //    lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
-    //    lineRenderer.widthMultiplier = 0.1f;
-
-    //}
     // Start is called before the first frame update
     void Start()
     {
+        this.gameObject.GetComponent<LoadItems>().Add(FormItemList());
         this.gameObject.GetComponent<DrawGraph>().Draw(graph);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
