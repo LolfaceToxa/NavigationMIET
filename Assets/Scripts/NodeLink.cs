@@ -17,7 +17,10 @@ public class NodeLink : MonoBehaviour
         var loader = Camera.main.GetComponent<LoadGraph>();
         foreach (var node in nodes)
         {
-            loader.AddLink(gameObject, node);
+            if (node != null)
+                loader.AddLink(gameObject, node);
+            else
+                Debug.LogError("One of the nodes has unassigned ref to neighbour");
         }
     }
 
