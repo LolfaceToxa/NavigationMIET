@@ -36,9 +36,11 @@ public class StartEndProcessor : MonoBehaviour
             var drawGraph = gameObject.GetComponent<DrawGraph>();
             if (drawGraph is null)
             {
+                
                 Debug.LogError("Object doesnt have 'DrawGraph' component!");
                 return;
             }
+            drawGraph.Draw(_start, _end);
             Debug.Log(_start);
             Debug.Log(_end);
 

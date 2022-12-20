@@ -4,37 +4,45 @@ using UnityEngine;
 using Pathing;
 using Node = LoadGraph.NamedNode;
 
+
+
+
 public class DrawGraph : MonoBehaviour
 {
-    Graph<Node> graph;
-    LineRenderer liner;
 
-    int currentNode = 0;
+    public Graph<Node> Graph { get; set; }
+    private LineRenderer liner;
+
+    [SerializeField]
+    private Color lineColor = Color.cyan;
+
+    [SerializeField]
+    private float lineWidth = 0.8f;
+
+
 
     private void Awake()
     {
         liner = gameObject.AddComponent<LineRenderer>();
         liner.material = new Material(Shader.Find("Sprites/Default"));
-        liner.startColor = Color.cyan;
-        liner.endColor = Color.cyan;
-        liner.widthMultiplier = 0.8f;
+        liner.startColor = lineColor;
+        liner.endColor = lineColor;
+        liner.widthMultiplier = lineWidth;
+        liner.sortingLayerID = SortingLayer.NameToID("Lines");
         liner.positionCount = 0;
-
     }
-
 
     private void ResetDrawer()
     {
         liner.positionCount = 0;
-        currentNode = 0;
     }
 
 
     public Node FindNodeByName(string name)
     {
-        foreach (Node node in graph.Nodes)
+        foreach (Node node in Graph.Nodes)
         {
-            if (node.Name == name) return node;
+            if (node.Name.ToLower() == name.ToLower()) return node;
         }
         return null;
     }
@@ -43,29 +51,26 @@ public class DrawGraph : MonoBehaviour
     {
         Node startNode = FindNodeByName(start);
         Node endNode = FindNodeByName(end);
-        if (startNode is not null && endNode is not null)
+
+        if (startNode is null || endNode is null)
         {
-            var path = Dijkstra<Node>.FindPath(graph, startNode, endNode);
-            Draw(path);
+            Debug.LogWarning($"start and end points are not found for {start} and {end}");
+            return;
         }
+
+
+        var path = Dijkstra<Node>.FindPath(Graph, startNode, endNode);
+        Draw(path);
     }
 
     public void Draw(List<Node> path)
     {
         ResetDrawer();
         liner.positionCount = path.Count;
-        for (int i = 1; i < path.Count; i++)
+        for (int i = 0; i < path.Count; i++)
         {
-            DrawLink(path[i - 1], path[i]);
+            liner.SetPosition(i, path[i].GameObject.transform.position);
         }
-    }
-
-    private void DrawLink(Node n1, Node n2)
-    {
-        liner.SetPosition(currentNode, n1.GameObject.transform.position);
-        currentNode++;
-        liner.SetPosition(currentNode, n2.GameObject.transform.position);
-        currentNode++;
     }
 
 

@@ -41,11 +41,11 @@ public class LoadGraph : MonoBehaviour
 
     public List<string> Names { get; private set; }
 
-    private Graph<NamedNode> graph;
+    public Graph<NamedNode> Graph { get; private set; }
 
     public LoadGraph()
     {
-        graph = new Graph<NamedNode>();
+        Graph = new Graph<NamedNode>();
     }
 
 
@@ -53,7 +53,7 @@ public class LoadGraph : MonoBehaviour
     {
         Debug.Assert(o1 is not null, "o1 is a null!");
         Debug.Assert(o2 is not null, "o2 is a null!");
-        this.graph.Add(new NamedNode(o1, name1), new NamedNode(o2, name2), Vector3.Distance(o1.transform.position, o2.transform.position));
+        this.Graph.Add(new NamedNode(o1, name1), new NamedNode(o2, name2), Vector3.Distance(o1.transform.position, o2.transform.position));
         Debug.Log(string.Format(@"added object under id[{0}] with name ""{1}"" into graph", o1.GetInstanceID(), o1.name));
         Debug.Log(string.Format(@"added object under id[{0}] with name ""{1}"" into graph", o2.GetInstanceID(), o2.name));
     }
@@ -63,7 +63,7 @@ public class LoadGraph : MonoBehaviour
     {
         Names = new();
         Debug.Log("loadeding items");
-        foreach (var node in graph.Nodes)
+        foreach (var node in Graph.Nodes)
         {
             if (string.IsNullOrEmpty(node.Name)) continue;
             Names.Add(node.Name);
@@ -76,5 +76,6 @@ public class LoadGraph : MonoBehaviour
     void Start()
     {
         FormItemList();
+        gameObject.GetComponent<DrawGraph>().Graph = Graph;
     }
 }

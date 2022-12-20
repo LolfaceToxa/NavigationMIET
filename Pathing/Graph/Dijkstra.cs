@@ -16,7 +16,11 @@ namespace Pathing
 
         public const double ERROR = 1e-16;
 
-        public static bool NearZero(double value) => Math.Abs(value) < ERROR;
+        public static bool NearZero(double value)
+        {
+            if (value < 0) return -value < ERROR;
+            return value < ERROR;
+        }
 
 
         static private TNode FindNextMin(Dictionary<TNode, double> distances, Dictionary<TNode, bool> shortest, HashSet<TNode> nodes)
