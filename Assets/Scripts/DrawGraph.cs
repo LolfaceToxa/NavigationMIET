@@ -23,34 +23,49 @@ public class DrawGraph : MonoBehaviour
     }
 
 
-    public void Draw(Graph<Node> _graph)
+    private void ResetDrawer()
     {
-        graph = _graph;
-        liner.positionCount = graph.Links.Count * 2;
-        foreach (var link in graph.Links)
+        liner.positionCount = 0;
+        currentNode = 0;
+    }
+
+
+    public Node FindNodeByName(string name)
+    {
+        foreach (Node node in graph.Nodes)
         {
-            DrawLink(link.A, link.B);
+            if (node.Name == name) return node;
+        }
+        return null;
+    }
+
+    public void Draw(string start, string end)
+    {
+        Node startNode = FindNodeByName(start);
+        Node endNode = FindNodeByName(end);
+        if (startNode is not null && endNode is not null)
+        {
+            var path = Dijkstra<Node>.FindPath(graph, startNode, endNode);
+            Draw(path);
         }
     }
 
-    void DrawLink(Node n1, Node n2)
+    public void Draw(List<Node> path)
+    {
+        ResetDrawer();
+        liner.positionCount = path.Count;
+        for (int i = 1; i < path.Count; i++)
+        {
+            DrawLink(path[i - 1], path[i]);
+        }
+    }
+
+    private void DrawLink(Node n1, Node n2)
     {
         liner.SetPosition(currentNode, n1.GameObject.transform.position);
         currentNode++;
         liner.SetPosition(currentNode, n2.GameObject.transform.position);
         currentNode++;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 

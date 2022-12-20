@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 public class LoadGraph : MonoBehaviour
 {
 
-    public class NamedNode : INode
+    public class NamedNode : Node
     {
         public GameObject GameObject { get; }
         public string Name { get; set; }
@@ -38,6 +38,9 @@ public class LoadGraph : MonoBehaviour
 
     }
 
+
+    public List<string> Names { get; private set; }
+
     private Graph<NamedNode> graph;
 
     public LoadGraph()
@@ -56,24 +59,22 @@ public class LoadGraph : MonoBehaviour
     }
 
 
-    private List<string> FormItemList()
+    private void FormItemList()
     {
-        List<string> items = new();
+        Names = new();
         Debug.Log("loadeding items");
         foreach (var node in graph.Nodes)
         {
             if (string.IsNullOrEmpty(node.Name)) continue;
-            items.Add(node.Name);
+            Names.Add(node.Name);
             Debug.Log(node.Name);
         }
-        return items;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.GetComponent<LoadItems>().Add(FormItemList());
-        this.gameObject.GetComponent<DrawGraph>().Draw(graph);
+        FormItemList();
     }
 }

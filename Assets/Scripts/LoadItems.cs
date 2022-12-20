@@ -6,22 +6,15 @@ using static UnityEditor.Progress;
 
 public class LoadItems : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] comboBoxes;
 
-    private List<string> _items;
-
-    public void Add(List<string> items)
+    private void Awake()
     {
-        _items = items;
+        Load(Camera.main.GetComponent<LoadGraph>().Names);
     }
 
-    public void Load()
+    private void Load(List<string> names)
     {
-        foreach (var comboBox in comboBoxes)
-        {
-            comboBox.GetComponent<AutoCompleteComboBox>().SetAvailableOptions(_items);
-        }
+        gameObject.GetComponent<AutoCompleteComboBox>().SetAvailableOptions(names);
     }
 
 
